@@ -1,0 +1,3 @@
+rootProject.name = 'ClassUtils'
+include 'processor'
+include 'annotations'

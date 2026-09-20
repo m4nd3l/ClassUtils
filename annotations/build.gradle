@@ -1,0 +1,51 @@
+plugins {
+    id 'java-library'
+    id 'signing'
+    id "com.vanniktech.maven.publish" version "0.28.0"
+}
+group = 'dev.m4nd3l'
+version = '1.0-SNAPSHOT'
+
+mavenPublishing {
+    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
+
+    pom {
+        name = "ClassUtils"
+        description = "An annotation package for the annotation processor"
+        url = "https://github.com/m4nd3l/ClassUtils"
+        licenses {
+            license {
+                name = "The Apache License, Version 2.0"
+                url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+        }
+        developers {
+            developer {
+                id = "m4nd3l"
+                name = "m4nd3l"
+                email = "mandel123e@gmail.com"
+            }
+        }
+        scm {
+            connection = "scm:git:git://github.com/m4nd3l/LoggerUtil.git"
+            developerConnection = "scm:git:ssh://github.com/m4nd3l/LoggerUtil.git"
+            url = "https://github.com/m4nd3l/LoggerUtil"
+        }
+    }
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:6.0.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
