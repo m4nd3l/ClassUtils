@@ -1,19 +1,20 @@
 plugins {
     id 'java-library'
     id 'signing'
-    id "com.vanniktech.maven.publish" version "0.28.0"
+    id "com.vanniktech.maven.publish" version "0.37.0"
 }
-group = 'dev.m4nd3l'
-version = '1.0-SNAPSHOT'
+
+group = 'io.github.m4nd3l'
+version = '1.1.0'
 
 mavenPublishing {
-    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
+    publishToMavenCentral()
     signAllPublications()
 
     pom {
         name = "ClassUtils"
         description = "An annotation package for the annotation processor"
-        url = "https://github.com/m4nd3l/ClassUtils"
+        url = "https://github.com/m4nd3l/classutils"
         licenses {
             license {
                 name = "The Apache License, Version 2.0"
@@ -28,13 +29,17 @@ mavenPublishing {
             }
         }
         scm {
-            connection = "scm:git:git://github.com/m4nd3l/LoggerUtil.git"
-            developerConnection = "scm:git:ssh://github.com/m4nd3l/LoggerUtil.git"
-            url = "https://github.com/m4nd3l/LoggerUtil"
+            connection = "scm:git:git://github.com/m4nd3l/classutils.git"
+            developerConnection = "scm:git:ssh://github.com/m4nd3l/classutils.git"
+            url = "https://github.com/m4nd3l/classutils"
         }
     }
 }
 
+signing {
+    useGpgCmd()
+    sign publishing.publications
+}
 
 repositories {
     mavenCentral()

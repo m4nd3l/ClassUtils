@@ -18,3 +18,20 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+allprojects {
+    tasks.withType(JavaCompile).configureEach {
+        options.fork = true
+        options.forkOptions.jvmArgs += [
+                '--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED',
+                '--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED',
+                '--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED',
+                '--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED',
+                '--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED'
+        ]
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}
